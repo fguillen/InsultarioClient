@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ text }}</h1>
+    <p class="insult">{{ text }}</p>
     <button v-on:click="getInsult">Get Another Insult</button>
   </div>
 </template>
@@ -27,5 +27,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+  .insult {
+    font-family: "Crimson Text", serif;
+    /*font-style: italic;*/
+    font-size: 3em;
+    line-height: 1em;
+    /*font-size: 2vw;*/
+  }
 </style>
