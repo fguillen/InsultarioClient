@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <p class="insult">{{ text }}</p>
-    <button v-on:click="getInsult">Get Another Insult</button>
+    <button v-on:click="getInsult" class="btn btn-light">Get Another Insult</button>
   </div>
 </template>
 
@@ -30,8 +30,8 @@ export default {
   .insult {
     font-family: "Crimson Text", serif;
     /*font-style: italic;*/
-    font-size: 3em;
-    line-height: 1em;
+    font-size: 2em;
+    line-height: 1.1em;
     /*font-size: 2vw;*/
   }
 </style>
