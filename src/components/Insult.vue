@@ -14,9 +14,7 @@ export default {
   },
   methods: {
     getInsult: function() {
-      console.log("getInsult");
       this.$http.get('https://insultario.herokuapp.com/front/insults/random').then(response => {
-        console.log(response.body);
         this.text = response.body.text;
       });
     }
