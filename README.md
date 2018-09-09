@@ -19,3 +19,15 @@ npm run build
 ```
 npm run lint
 ```
+
+### To deploy
+
+We have to have `/dist` folder to be pushed to the repo
+
+```
+git co heroku
+git rebase master
+npm run build
+git push heroku HEAD:master
+git co master
+```
