@@ -32,4 +32,8 @@ export default {
     line-height: 1.1em;
     /*font-size: 2vw;*/
   }
+
+  .insult::before {
+    content: "— ";
+  }
 </style>
