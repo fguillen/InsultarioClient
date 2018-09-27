@@ -1,19 +1,16 @@
 <template>
   <div id="app" class="container">
     <Navbar />
-    <br />
-    <Insult />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Insult from './components/insult.vue'
-import Navbar from './components/navbar.vue'
+import Navbar from './components/Navbar.vue'
 
 export default {
   name: 'app',
   components: {
-    Insult,
     Navbar
   }
 }
