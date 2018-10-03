@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Insult from '@/components/Insult.vue'
+import Insults from '@/components/Insults.vue'
 import About from '@/components/About.vue'
 import Root from '@/components/Root'
 
@@ -19,9 +20,14 @@ export default new Router({
       component: About
     },
     {
-      path: '/insult',
+      path: '/insult/:id',
       name: 'Insult',
       component: Insult
+    },
+    {
+      path: '/insults',
+      name: 'Insults',
+      component: Insults
     }
   ]
 })

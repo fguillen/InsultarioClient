@@ -1,8 +1,11 @@
 <template>
-  <div class="hello">
-    <p class="insult">{{ text }}</p>
-    <button v-on:click="next" class="btn btn-light">Next</button>
+
+  <div class="list-group">
+    <router-link v-for="insult in storeData.insults" :to="{ name: 'Insult', params: { id: insult.insult.uuid } }" class="list-group-item list-group-item-action insult">
+      {{ insult.insult.text }}
+    </router-link>
   </div>
+
 </template>
 
 <script>
@@ -11,19 +14,9 @@ import Store from '../store';
 export default {
   data: function() {
     return {
-    }
-  },
-  methods: {
-    next: function() {
-      console.log("param", this.$route.params.id);
-    }
-  },
-  computed: {
-    text: function() {
-      return Store.methods.getInsult(this.$route.params.id).insult.text;
+      storeData: Store.data
     }
   }
-
 }
 </script>
 
