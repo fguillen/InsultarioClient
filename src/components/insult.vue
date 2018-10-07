@@ -21,6 +21,10 @@ export default {
       insult: Store.methods.getInsult(this.$route.params.id)
     }
   },
+  created: function () {
+    console.log("Insult.vue.created");
+    Store.methods.markAsReaded(this.insult);
+  },
   methods: {
     next: function() {
       var nextInsult = Store.methods.getNextInsult(this.insult);

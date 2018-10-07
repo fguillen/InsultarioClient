@@ -77,6 +77,13 @@ const Store = {
       var result = Store.data.insults[actualIndex - 1];
 
       return result;
+    },
+    markAsReaded(insult) {
+      console.log('markAsReaded triggered');
+      Vue.http.put('http://insultario.com.pizza/front/users/' + Store.data.user + '/insults/' + insult.insult.uuid + '/mark_as_readed').then(response => {
+        console.log("(markAsReaded) response.body", response.body);
+        insult.readed = true;
+      });
     }
   }
 }
