@@ -1,7 +1,7 @@
 <template>
 
   <div class="list-group">
-    <router-link v-for="insult in storeData.insults" :to="{ name: 'Insult', params: { id: insult.insult.uuid } }" class="list-group-item list-group-item-action insult">
+    <router-link v-for="insult in storeData.insults" :to="{ name: 'Insult', params: { id: insult.insult.uuid } }" class="list-group-item list-group-item-action" :class="colorStyle(insult.insult.uuid)">
       {{ insult.insult.text }}
     </router-link>
   </div>
@@ -15,6 +15,11 @@ export default {
   data: function() {
     return {
       storeData: Store.data
+    }
+  },
+  methods: {
+    colorStyle(uuid) {
+      return Store.methods.getColorStyleByUUID(uuid);
     }
   }
 }

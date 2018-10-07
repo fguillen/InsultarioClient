@@ -3,6 +3,7 @@
     <h1>About!</h1>
     <button v-on:click="loadUser">Load User</button>
     <button v-on:click="loadInsults">Load Insults</button>
+    <button v-on:click="color">Color</button>
     <router-link class="navbar-brand" to="/">{{storeData.user}}</router-link>
     Message: <h2>{{storeData.message}}</h2>
     User: <h2>{{storeData.user}}</h2>
@@ -29,6 +30,9 @@ export default {
     },
     loadInsults: function (event) {
       Store.methods.loadInsults();
+    },
+    color: function (event) {
+      Store.methods.getColorByUUID("holahola");
     }
   }
 }

@@ -1,11 +1,28 @@
 import Vue from 'vue';
+import {_} from 'vue-underscore';
 
 const Store = {
   // If I make a function here nothing works
   data: {
     user: null,
     insults: [],
-    message: "Message 1"
+    message: "Message 1",
+    colorsStyles: [
+      "insult-style-0",
+      "insult-style-1",
+      "insult-style-2",
+      "insult-style-3",
+      "insult-style-4",
+      "insult-style-5",
+      "insult-style-6",
+      "insult-style-7",
+      "insult-style-8",
+      "insult-style-9",
+      "insult-style-10",
+      "insult-style-11",
+      "insult-style-12",
+      "insult-style-13"
+    ]
   },
   methods: {
     loadUser: function() {
@@ -33,6 +50,18 @@ const Store = {
       console.log("insult", insult);
 
       return insult;
+    },
+    getColorStyleByUUID(uuid){
+      var chars = uuid.split("");
+      var numbers = _.map(chars, function(char) { return char.charCodeAt() });
+      var total = _.reduce(numbers, function(memo, num){ return memo + num; }, 0);
+      var totalColors = Store.data.colorsStyles.length;
+      var colorIndex = total % totalColors;
+      var result = Store.data.colorsStyles[colorIndex];
+
+      console.log("getColorStyleByUUID", uuid, result);
+
+      return result;
     }
   }
 }
