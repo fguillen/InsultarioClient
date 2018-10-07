@@ -17,8 +17,13 @@ export default {
 </script>
 
 <style>
+html, body {
+  height: 100%;
+}
 #app {
   font-family: "Montserrat", serif;
+  padding-top: 56px;
+  height: 100%;
 }
 
 .insult-style-0 {
