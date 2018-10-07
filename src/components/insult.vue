@@ -5,6 +5,7 @@
     <footer class="footer fixed-bottom">
       <div class="container">
         <span class="text-muted">Place sticky footer content here.</span>
+        <button v-on:click="previous" class="btn btn-light">Previous</button>
         <button v-on:click="next" class="btn btn-light">Next</button>
       </div>
     </footer>
@@ -28,6 +29,12 @@ export default {
         this.$router.push({ name: "NoMoreInsults" });
       } else {
         this.$router.push({ name: 'Insult', params: { id: nextInsult.insult.uuid } });
+      }
+    },
+    previous: function() {
+      var previousInsult = Store.methods.getPreviousInsult(this.insult);
+      if(previousInsult != null) {
+        this.$router.push({ name: 'Insult', params: { id: previousInsult.insult.uuid } });
       }
     },
     colorStyle: function() {

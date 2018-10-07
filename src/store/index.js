@@ -71,6 +71,12 @@ const Store = {
       var result = Store.data.insults[actualIndex + 1];
 
       return result;
+    },
+    getPreviousInsult(insult) {
+      var actualIndex = _.indexOf(Store.data.insults, insult);
+      var result = Store.data.insults[actualIndex - 1];
+
+      return result;
     }
   }
 }
