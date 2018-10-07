@@ -51,7 +51,7 @@ const Store = {
 
       return insult;
     },
-    getColorStyleByUUID(uuid){
+    getColorStyleByUUID(uuid) {
       var chars = uuid.split("");
       var numbers = _.map(chars, function(char) { return char.charCodeAt() });
       var total = _.reduce(numbers, function(memo, num){ return memo + num; }, 0);
@@ -60,6 +60,15 @@ const Store = {
       var result = Store.data.colorsStyles[colorIndex];
 
       console.log("getColorStyleByUUID", uuid, result);
+
+      return result;
+    },
+    getNextInsult(insult) {
+      console.log("XXx", Store.data.insults[0], insult);
+      var actualIndex = _.indexOf(Store.data.insults, insult);
+      console.log("getNextInsult", insult, actualIndex);
+      console.log("Store.data.insults", Store.data.insults);
+      var result = Store.data.insults[actualIndex + 1];
 
       return result;
     }
