@@ -1,15 +1,17 @@
 <template>
-  <div class="insult">
-    <p class="insult-body" :class="colorStyle()">{{ insult.insult.text }}</p>
+  <transition name="fade" appear>
+    <div class="insult">
+      <p class="insult-body" :class="colorStyle()">{{ insult.insult.text }}</p>
 
-    <footer class="footer fixed-bottom">
-      <div class="container">
-        <span class="text-muted">Place sticky footer content here.</span>
-        <button v-on:click="previous" class="btn btn-light">Previous</button>
-        <button v-on:click="next" class="btn btn-light">Next</button>
-      </div>
-    </footer>
-  </div>
+      <footer class="footer fixed-bottom">
+        <div class="container">
+          <span class="text-muted">Place sticky footer content here.</span>
+          <button v-on:click="previous" class="btn btn-light">Previous</button>
+          <button v-on:click="next" class="btn btn-light">Next</button>
+        </div>
+      </footer>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -68,5 +70,25 @@ export default {
 
   .insult-body::before {
     content: "— ";
+  }
+
+  .fade-enter {
+    /*color: red;*/
+  }
+
+  .fade-enter-active {
+    /*transition: color 20s;
+    color: blue;*/
+    animation: fade-in 1s ease-out forwards;
+  }
+
+  @keyframes fade-in {
+    from {
+      transform: translateY(20px);
+    }
+
+    to{
+      transform: translateY(0px);
+    }
   }
 </style>
