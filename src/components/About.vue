@@ -26,10 +26,15 @@ export default {
   },
   methods: {
     loadUser: function (event) {
-      Store.methods.loadUser();
+      Store.methods.loadUser().then(user => {
+        console.log("loadUser.user", user);
+      });
     },
     loadInsults: function (event) {
-      Store.methods.loadInsults();
+      console.log("About.loadInsults :: INI");
+      Store.methods.loadInsults().then( () => {
+        console.log("About.loadInsults :: END");
+      });
     },
     color: function (event) {
       Store.methods.getColorByUUID("holahola");

@@ -25,23 +25,42 @@ const Store = {
     ]
   },
   methods: {
-    loadUser: function() {
-      console.log('Loading User');
-      Store.data.user = Vue.cookies.get('user');
-
-      if(Store.data.user == null) {
-        console.log("Creating User");
-        Vue.http.post('http://insultario.com.pizza/front/users').then(response => {
-          Store.data.user = response.body.uuid;
-          Vue.cookies.set('user', Store.data.user);
+    loadAll: function() {
+      return new Promise(
+        function(resolve, reject) {
+          Store.methods.loadUser()
+          .then(Store.methods.loadInsults)
+          .then(resolve)
         });
-      }
+    },
+    loadUser: function() {
+      return new Promise(
+        function (resolve, reject) {
+          console.log('Loading User');
+          Store.data.user = Vue.cookies.get('user');
+
+          if(Store.data.user == null) {
+            console.log("Creating User");
+            Vue.http.post('http://insultario.com.pizza/front/users').then(response => {
+              Store.data.user = response.body.uuid;
+              Vue.cookies.set('user', Store.data.user);
+              resolve(Store.data.user);
+            });
+          } else {
+            resolve(Store.data.user);
+          }
+        });
     },
     loadInsults: function() {
-      console.log('clearMessageAction triggered');
-      Vue.http.get('http://insultario.com.pizza/front/users/' + Store.data.user + '/insults').then(response => {
-        Store.data.insults = response.body;
-      });
+      return new Promise(
+        function(resolve, reject) {
+          console.log('loadInsults :: INI');
+          Vue.http.get('http://insultario.com.pizza/front/users/' + Store.data.user + '/insults').then(response => {
+            Store.data.insults = response.body;
+            resolve();
+          });
+          console.log('loadInsults :: END');
+        });
     },
     getInsult: function(uuid) {
       console.log("getInsult", uuid);

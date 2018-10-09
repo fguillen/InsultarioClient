@@ -25,7 +25,11 @@ new Vue({
     this.$cookies.config('1000d');
     console.log("main.js", Vue._);
     console.log("main.js", _);
-    Store.methods.loadUser();
+    console.log("loadAll :: INI");
+    Store.methods.loadAll().then( () => {
+      console.log("loadAll :: END");
+      this.$router.push({ name: "Insults" });
+    });
   }
 }).$mount('#app')
 
