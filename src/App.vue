@@ -22,7 +22,6 @@ html, body {
 }
 #app {
   font-family: "Montserrat", serif;
-  padding-top: 56px;
   height: 100%;
 }
 

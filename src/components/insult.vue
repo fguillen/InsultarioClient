@@ -73,8 +73,13 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .insult {
-    height: 100%;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
     background-color: red;
+    z-index: 0;
   }
 
   .insult-body {
@@ -82,7 +87,9 @@ export default {
     font-size: 2em;
     line-height: 1.1em;
     /*font-size: 2vw;*/
+
     padding: 1em;
+    padding-top: 3em;
 
     height: 100%;
   }
