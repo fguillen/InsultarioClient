@@ -1,14 +1,20 @@
 ## Todo
-- Loading application: loading User, loading insults -> going to the list
-- Insult: mark as loved API
 - Sharing: in twitter, facebook
-- List: truncate the texts
+- Filter: per unread/loved
+- NoMore: implement button to load more insults
+- Loading: make a nice loading page
+- About: make a nice about page
 
 ## Doing
 
 
 ## Done
+- Loading application: loading User, loading insults -> going to the list
 - Render: Readed and Loved icons
 - Insult: Next and Previous buttons
 - Styling: using a very colorful palette and using some style-palette algorithm to choose the color based on the uuid of the Insult so the same insult always has the same color
+- Insult: mark as loved API
+- List: truncate the texts
+
+
 
