@@ -76,8 +76,8 @@ export default {
     height: 100%;
     background-color: red;
   }
+
   .insult-body {
-    font-family: "Crimson Text", serif;
     /*font-style: italic;*/
     font-size: 2em;
     line-height: 1.1em;
@@ -88,10 +88,6 @@ export default {
 
   .footer {
     padding-bottom: 1em;
-  }
-
-  .insult-body::before {
-    content: "— ";
   }
 
   .fade-enter {

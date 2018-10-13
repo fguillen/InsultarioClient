@@ -4,7 +4,9 @@
     <router-link v-for="insult in storeData.insults" :to="{ name: 'Insult', params: { id: insult.insult.uuid } }" class="list-group-item list-group-item-action" :class="colorStyle(insult.insult.uuid)">
       <div class="row">
         <div class="col-11">
-          {{ insult.insult.text }}
+          <div class="insult">
+            <p class="insult-body">{{ insult.insult.text | truncate }}</p>
+          </div>
         </div>
         <div class="col-1 text-right">
           <span v-if="insult.readed" class="fas fa-eye"></span>
@@ -29,21 +31,27 @@ export default {
     colorStyle(uuid) {
       return Store.methods.getColorStyleByUUID(uuid);
     }
+  },
+  filters: {
+    truncate: function (string) {
+      const limit = 40;
+      if (!string) return '';
+      if (string.length < limit ) return string;
+
+      string = string.substring(0, limit);
+      string += "...";
+      return string;
+    }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .insult {
-    font-family: "Crimson Text", serif;
-    /*font-style: italic;*/
-    font-size: 2em;
+  .insult-body {
+    font-size: 1.5em;
     line-height: 1.1em;
-    /*font-size: 2vw;*/
-  }
-
-  .insult::before {
-    content: "— ";
+    padding: 0.5em;
+    margin: 0;
   }
 </style>

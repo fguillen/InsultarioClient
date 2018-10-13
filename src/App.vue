@@ -26,6 +26,14 @@ html, body {
   height: 100%;
 }
 
+  .insult-body {
+    font-family: "Crimson Text", serif;
+  }
+
+  .insult-body::before {
+    content: "— ";
+  }
+
 .insult-style-0 {
   background-color: rgba(91, 192, 235, 1);
 }
