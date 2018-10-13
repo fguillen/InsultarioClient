@@ -83,6 +83,7 @@ export default {
     line-height: 1.1em;
     /*font-size: 2vw;*/
     padding: 1em;
+
     height: 100%;
   }
 

@@ -1,3 +1,3 @@
 <template>
-  <h1>Root!</h1>
+  <h1>Loading...</h1>
 </template>

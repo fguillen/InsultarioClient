@@ -1,19 +1,14 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <nav class="navbar fixed-top navbar-light navbar-expand-lg navbar-template">
     <router-link class="navbar-brand" to="/">Insultario</router-link>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <router-link class="nav-link" to="/insults">Insultos</router-link>
-        </li>
-        <li class="nav-item">
-          <router-link class="nav-link" to="/about">About</router-link>
-        </li>
-      </ul>
-    </div>
+    <ul class="navbar-nav flex-row">
+      <li class="nav-item">
+        <router-link class="nav-link px-2" to="/insults"><i class="fas fa-list"></i></router-link>
+      </li>
+      <li class="nav-item">
+        <router-link class="nav-link px-2" to="/about"><i class="fas fa-info"></i></router-link>
+      </li>
+    </ul>
   </nav>
 </template>
 
