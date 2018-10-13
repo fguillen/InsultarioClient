@@ -4,10 +4,18 @@
       <p class="insult-body" :class="colorStyle()">{{ insult.insult.text }}</p>
 
       <footer class="footer fixed-bottom">
-        <div class="container">
-          <span class="text-muted">Place sticky footer content here.</span>
-          <button v-on:click="previous" class="btn btn-light">Previous</button>
-          <button v-on:click="next" class="btn btn-light">Next</button>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col text-left">
+              <button v-on:click="previous" class="btn btn-outline-dark fas fa-angle-left"></button>
+            </div>
+            <div class="col text-center">
+              <i class="far fa-heart"></i>
+            </div>
+            <div class="col text-right">
+              <button v-on:click="next" class="btn btn-outline-dark fas fa-angle-right"></button>
+            </div>
+          </div>
         </div>
       </footer>
     </div>
@@ -66,6 +74,10 @@ export default {
     /*font-size: 2vw;*/
     padding: 1em;
     height: 100%;
+  }
+
+  .footer {
+    padding-bottom: 1em;
   }
 
   .insult-body::before {
