@@ -103,6 +103,20 @@ const Store = {
         console.log("(markAsReaded) response.body", response.body);
         insult.readed = true;
       });
+    },
+    markAsLoved(insult) {
+      console.log('markAsLoved triggered');
+      Vue.http.put('http://insultario.com.pizza/front/users/' + Store.data.user + '/insults/' + insult.insult.uuid + '/mark_as_loved').then(response => {
+        console.log("(markAsLoved) response.body", response.body);
+        insult.loved = true;
+      });
+    },
+    markAsUnloved(insult) {
+      console.log('markAsUnloved triggered');
+      Vue.http.put('http://insultario.com.pizza/front/users/' + Store.data.user + '/insults/' + insult.insult.uuid + '/mark_as_unloved').then(response => {
+        console.log("(markAsUnloved) response.body", response.body);
+        insult.loved = false;
+      });
     }
   }
 }

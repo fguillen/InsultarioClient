@@ -7,13 +7,14 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col text-left">
-              <button v-on:click="previous" class="btn btn-outline-dark fas fa-angle-left"></button>
+              <button v-on:click="previous" class="btn btn-lg btn-outline-dark fas fa-angle-left"></button>
             </div>
             <div class="col text-center">
-              <i class="far fa-heart"></i>
+              <button v-if="insult.loved" v-on:click="markAsUnloved" class="btn btn-lg btn-outline-dark fas fa-heart"></button>
+              <button v-else v-on:click="markAsLoved" class="btn btn-lg btn-outline-dark far fa-heart"></button>
             </div>
             <div class="col text-right">
-              <button v-on:click="next" class="btn btn-outline-dark fas fa-angle-right"></button>
+              <button v-on:click="next" class="btn btn-lg btn-outline-dark fas fa-angle-right"></button>
             </div>
           </div>
         </div>
@@ -54,6 +55,14 @@ export default {
     colorStyle: function() {
       console.log("insult.vue colorStyle");
       return Store.methods.getColorStyleByUUID(this.insult.insult.uuid);
+    },
+    markAsLoved() {
+      console.log("insult.vue markAsLoved");
+      Store.methods.markAsLoved(this.insult);
+    },
+    markAsUnloved() {
+      console.log("insult.vue markAsUnloved");
+      Store.methods.markAsUnloved(this.insult);
     }
   }
 
