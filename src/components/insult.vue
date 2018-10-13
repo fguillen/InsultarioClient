@@ -1,7 +1,9 @@
 <template>
-  <transition name="fade" appear>
+
     <div class="insult">
-      <p class="insult-body" :class="colorStyle()">{{ insult.insult.text }}</p>
+      <transition name="fade" appear>
+        <p class="insult-body" :class="colorStyle()">{{ insult.insult.text }}</p>
+      </transition>
 
       <footer class="footer fixed-bottom">
         <div class="container-fluid">
@@ -20,7 +22,6 @@
         </div>
       </footer>
     </div>
-  </transition>
 </template>
 
 <script>
