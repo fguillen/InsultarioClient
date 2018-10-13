@@ -2,7 +2,15 @@
 
   <div class="list-group">
     <router-link v-for="insult in storeData.insults" :to="{ name: 'Insult', params: { id: insult.insult.uuid } }" class="list-group-item list-group-item-action" :class="colorStyle(insult.insult.uuid)">
-      {{ insult.insult.text }}
+      <div class="row">
+        <div class="col-11">
+          {{ insult.insult.text }}
+        </div>
+        <div class="col-1 text-right">
+          <span v-if="insult.readed" class="fas fa-eye"></span>
+          <span v-if="insult.loved" class="fas fa-heart"></span>
+        </div>
+      </div>
     </router-link>
   </div>
 
