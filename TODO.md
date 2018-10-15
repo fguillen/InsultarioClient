@@ -4,6 +4,7 @@
 - NoMore: implement button to load more insults
 - Loading: make a nice loading page
 - About: make a nice about page
+- List onhover: no make background white.. maybe same color darker
 
 ## Doing
 
