@@ -1,7 +1,6 @@
 <template>
-
   <div class="list-group">
-    <router-link v-for="insult in storeData.insults" :to="{ name: 'Insult', params: { id: insult.insult.uuid } }" class="list-group-item list-group-item-action" :class="colorStyle(insult.insult.uuid)">
+    <router-link v-for="insult in insults" :to="{ name: 'Insult', params: { id: insult.insult.uuid } }" class="list-group-item list-group-item-action" :class="colorStyle(insult.insult.uuid)">
       <div class="row">
         <div class="col-11">
           <div class="insult">
@@ -15,21 +14,21 @@
       </div>
     </router-link>
   </div>
-
 </template>
 
 <script>
-import Store from '../store';
 
 export default {
-  data: function() {
-    return {
-      storeData: Store.data
-    }
-  },
   methods: {
     colorStyle(uuid) {
-      return Store.methods.getColorStyleByUUID(uuid);
+      console.log("into Insults.colorStyle", uuid);
+      return this.$store.getters.getColorStyleByUUID(uuid);
+    }
+  },
+  computed: {
+    insults() {
+      console.log("into Insults, insults", this.$store.state.insults);
+      return this.$store.state.insults;
     }
   },
   filters: {
@@ -42,6 +41,9 @@ export default {
       string += "...";
       return string;
     }
+  },
+  mounted() {
+    console.log("Insults component mounted!");
   }
 }
 </script>

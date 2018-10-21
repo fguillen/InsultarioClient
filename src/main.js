@@ -6,7 +6,7 @@ import Underscore from 'vue-underscore';
 
 import App from './App.vue'
 import router from './router'
-import Store from './store'
+import { store } from './store/store'
 
 Vue.config.productionTip = false;
 
@@ -19,6 +19,7 @@ import {_} from 'vue-underscore';
 
 new Vue({
   render: h => h(App),
+  store,
   router,
   created: function () {
     console.log('Initializing Vue!');
@@ -26,7 +27,7 @@ new Vue({
     console.log("main.js", Vue._);
     console.log("main.js", _);
     console.log("loadAll :: INI");
-    Store.methods.loadAll().then( () => {
+    this.$store.dispatch('loadAll').then( () => {
       console.log("loadAll :: END");
       this.$router.push({ name: "Insults" });
     });

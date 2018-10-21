@@ -1,45 +1,42 @@
 <template>
+  <div class="insult">
+    <transition name="fade" appear>
+      <p class="insult-body" :class="colorStyle()">{{ insult.insult.text }}</p>
+    </transition>
 
-    <div class="insult">
-      <transition name="fade" appear>
-        <p class="insult-body" :class="colorStyle()">{{ insult.insult.text }}</p>
-      </transition>
-
-      <footer class="footer fixed-bottom">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col text-left">
-              <button v-on:click="previous" class="btn btn-lg btn-outline-dark fas fa-angle-left"></button>
-            </div>
-            <div class="col text-center">
-              <button v-if="insult.loved" v-on:click="markAsUnloved" class="btn btn-lg btn-outline-dark fas fa-heart"></button>
-              <button v-else v-on:click="markAsLoved" class="btn btn-lg btn-outline-dark far fa-heart"></button>
-            </div>
-            <div class="col text-right">
-              <button v-on:click="next" class="btn btn-lg btn-outline-dark fas fa-angle-right"></button>
-            </div>
+    <footer class="footer fixed-bottom">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col text-left">
+            <button v-on:click="previous" class="btn btn-lg btn-outline-dark fas fa-angle-left"></button>
+          </div>
+          <div class="col text-center">
+            <button v-if="insult.loved" v-on:click="markAsUnloved" class="btn btn-lg btn-outline-dark fas fa-heart"></button>
+            <button v-else v-on:click="markAsLoved" class="btn btn-lg btn-outline-dark far fa-heart"></button>
+          </div>
+          <div class="col text-right">
+            <button v-on:click="next" class="btn btn-lg btn-outline-dark fas fa-angle-right"></button>
           </div>
         </div>
-      </footer>
-    </div>
+      </div>
+    </footer>
+  </div>
 </template>
 
 <script>
-import Store from '../store';
-
 export default {
-  data: function() {
-    return {
-      insult: Store.methods.getInsult(this.$route.params.id)
+  computed: {
+    insult: function() {
+      return this.$store.getters.getInsult(this.$route.params.id)
     }
   },
-  created: function () {
+  mounted: function() {
     console.log("Insult.vue.created");
-    Store.methods.markAsReaded(this.insult);
+    this.$store.commit('markAsReaded', this.insult);
   },
   methods: {
     next: function() {
-      var nextInsult = Store.methods.getNextInsult(this.insult);
+      var nextInsult = this.$store.getters.getNextInsult(this.insult);
       console.log("next", nextInsult);
       if(nextInsult == null) {
         this.$router.push({ name: "NoMoreInsults" });
@@ -48,22 +45,23 @@ export default {
       }
     },
     previous: function() {
-      var previousInsult = Store.methods.getPreviousInsult(this.insult);
+      var previousInsult = this.$store.getters.getPreviousInsult(this.insult);
       if(previousInsult != null) {
         this.$router.push({ name: 'Insult', params: { id: previousInsult.insult.uuid } });
       }
     },
     colorStyle: function() {
-      console.log("insult.vue colorStyle");
-      return Store.methods.getColorStyleByUUID(this.insult.insult.uuid);
+      console.log("insult.vue colorStyle", this);
+      console.log("insult.vue colorStyle.insult", this.insult);
+      return this.$store.getters.getColorStyleByUUID(this.insult.insult.uuid);
     },
-    markAsLoved() {
+    markAsLoved: function() {
       console.log("insult.vue markAsLoved");
-      Store.methods.markAsLoved(this.insult);
+      this.$store.dispatch('markAsLoved', this.insult);
     },
-    markAsUnloved() {
+    markAsUnloved: function() {
       console.log("insult.vue markAsUnloved");
-      Store.methods.markAsUnloved(this.insult);
+      this.$store.dispatch('markAsUnloved', this.insult);
     }
   }
 
