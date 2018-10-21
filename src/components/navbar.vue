@@ -1,7 +1,9 @@
 <template>
   <div class="navbar navbar-light shadow-sm">
     <div class="col-10 col-md-11">
-      <router-link class="navbar-brand" to="/about">Insultario</router-link>
+      <router-link class="navbar-brand" to="/about">
+        <img src="/assets/logo.png" height="30" alt="Insultario">
+      </router-link>
     </div>
     <div class="col-2 col-md-1 text-right">
       <ul class="navbar-nav flex-row" style="float:right;">
@@ -26,5 +28,7 @@
     padding-bottom: 1px;
     padding-left: 0;
     padding-right: 0;
+
+    background-color: #dc9b48;
   }
 </style>
