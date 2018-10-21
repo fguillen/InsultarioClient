@@ -1,7 +1,7 @@
 <template>
-  <div class="navbar navbar-light">
+  <div class="navbar navbar-light shadow-sm">
     <div class="col-10 col-md-11">
-      <router-link class="navbar-brand" to="/">Insultario</router-link>
+      <router-link class="navbar-brand" to="/about">Insultario</router-link>
     </div>
     <div class="col-2 col-md-1 text-right">
       <ul class="navbar-nav flex-row" style="float:right;">
@@ -17,16 +17,6 @@
 </template>
 
 <script>
-import Store from '../store'
-
-export default {
-  data: function() {
-    return {
-      text: 'HelloWorld',
-      storeData: Store.data
-    }
-  }
-}
 </script>
 
 <style scoped>
