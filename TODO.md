@@ -2,7 +2,6 @@
 - Sharing: in twitter, facebook
 - Filter: per unread/loved
 - NoMore: implement button to load more insults
-- Loading: make a nice loading page
 - List onhover: no make background white.. maybe same color darker
 
 ## Doing
@@ -17,4 +16,5 @@
 - List: truncate the texts
 - About: make a nice about page
 - Favicon
+- Loading: make a nice loading page
 

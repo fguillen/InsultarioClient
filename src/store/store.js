@@ -78,7 +78,7 @@ export const store = new Vuex.Store({
       return new Promise(
         function(resolve, reject) {
           dispatch('loadUser')
-          .then(() => { dispatch('loadInsults') })
+          .then(() => { return dispatch('loadInsults') })
           .then(resolve)
         });
     },
@@ -91,6 +91,7 @@ export const store = new Vuex.Store({
           if(state.user == null) {
             console.log("Creating User");
             Vue.http.post('http://insultario.com.pizza/front/users').then(response => {
+              console.log("User Loaded!");
               commit('setUser', response.body.uuid);
               Vue.cookies.set('user', state.user);
               resolve(state.user);
@@ -105,6 +106,8 @@ export const store = new Vuex.Store({
         function(resolve, reject) {
           console.log('loadInsults :: INI');
           Vue.http.get('http://insultario.com.pizza/front/users/' + state.user + '/insults').then(response => {
+            console.log("Insults loaded!");
+
             commit('setInsults', response.body);
             resolve();
           });

@@ -24,8 +24,6 @@ new Vue({
   created: function () {
     console.log('Initializing Vue!');
     this.$cookies.config('1000d');
-    console.log("main.js", Vue._);
-    console.log("main.js", _);
     console.log("loadAll :: INI");
     this.$store.dispatch('loadAll').then( () => {
       console.log("loadAll :: END");
