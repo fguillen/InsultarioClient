@@ -1,6 +1,5 @@
 ## Todo
 - Sharing: in twitter, facebook
-- Filter: per unread/loved
 - NoMore: implement button to load more insults
 - List onhover: no make background white.. maybe same color darker
 
@@ -17,4 +16,5 @@
 - About: make a nice about page
 - Favicon
 - Loading: make a nice loading page
+- Filter: per unread/loved
 

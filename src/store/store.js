@@ -33,6 +33,19 @@ export const store = new Vuex.Store({
     getInsult: (state) => (payload) => {
       return state.insults.filter(insult => insult.insult.uuid === payload)[0];
     },
+    getInsultsFiltered: (state) => (payload) => {
+      let result = state.insults;
+
+      if(state.filters.onlyUnread) {
+        result = result.filter(insult => !insult.readed)
+      }
+
+      if(state.filters.onlyLoved) {
+        result = result.filter(insult => insult.loved)
+      }
+
+      return result;
+    },
     getColorStyleByUUID: (state) => (payload) => {
       var chars = payload.split("");
       var numbers = _.map(chars, function(char) { return char.charCodeAt() });
@@ -43,15 +56,15 @@ export const store = new Vuex.Store({
 
       return result;
     },
-    getNextInsult: (state) => (payload) => {
-      var actualIndex = _.indexOf(state.insults, payload);
-      var result = state.insults[actualIndex + 1];
+    getNextInsult: (state, getters) => (payload) => {
+      var actualIndex = _.indexOf(getters.getInsultsFiltered(), payload);
+      var result = getters.getInsultsFiltered()[actualIndex + 1];
 
       return result;
     },
-    getPreviousInsult: (state) => (payload) => {
-      var actualIndex = _.indexOf(state.insults, payload);
-      var result = state.insults[actualIndex - 1];
+    getPreviousInsult: (state, getters) => (payload) => {
+      var actualIndex = _.indexOf(getters.getInsultsFiltered(), payload);
+      var result = getters.getInsultsFiltered()[actualIndex - 1];
 
       return result;
     },
@@ -71,6 +84,14 @@ export const store = new Vuex.Store({
     },
     markAsUnloved: (state, payload) => {
       payload.loved = false;
+    },
+    onlyUnreadToggle: (state, payload) => {
+      console.log("store.onlyUnreadToggle");
+      state.filters.onlyUnread = !state.filters.onlyUnread;
+    },
+    onlyLovedToggle: (state, payload) => {
+      console.log("store.onlyLovedToggle");
+      state.filters.onlyLoved = !state.filters.onlyLoved;
     }
   },
   actions: {
