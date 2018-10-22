@@ -17,17 +17,17 @@ export default {
 </script>
 
 <style>
+
+@import url('https://fonts.googleapis.com/css?family=Goudy+Bookletter+1911');
+
 html, body {
   height: 100%;
 }
 #app {
-  font-family: "Montserrat", serif;
+  font-family: 'Goudy Bookletter 1911', "Montserrat", serif;
   height: 100%;
 }
 
-  .insult-body {
-    font-family: "Crimson Text", serif;
-  }
 
   .insult-body::before {
     content: "— ";
